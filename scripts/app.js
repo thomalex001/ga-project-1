@@ -1,11 +1,11 @@
 function init() {
   const grid = document.querySelector('.grid');
   const cells = [];
-  const width = 10;
+  const width = 11;
   const cellCount = width * width;
 
-  let playerPosition = 94;
-  let invaders = [4, 5, 6, 7];
+  let playerPosition = 115;
+  let invaders = [3, 4, 5, 6, 7, 13, 14, 15, 16];
 
   function createGrid(startingPosition) {
     for (let i = 0; i < cellCount; i++) {
@@ -16,18 +16,12 @@ function init() {
     }
     cells[startingPosition].classList.add('player');
   }
-  
-  function invadersMap() {
-    cells[invaders[0]].classList.add('invaders');
-  }
 
   function handleKeyUp(event) {
-    cells[playerPosition].classList.remove('player'); // * remove player class from old position
+    cells[playerPosition].classList.remove('player');
     const x = playerPosition % width;
 
-    switch (
-      event.keyCode // * calculate the new index
-    ) {
+    switch (event.keyCode) {
       case 39:
         if (x < width - 1) playerPosition++;
         break;
@@ -37,26 +31,33 @@ function init() {
       default:
         console.log('invalid key do nothing');
     }
-    cells[playerPosition].classList.add('player'); // * add the class back at the new position
+    cells[playerPosition].classList.add('player');
   }
 
-  // let count = 3;
-  // let counter;
-  // function invadersMovingPattern(counter) {
-  //   counter = setInterval((invadersPosition) => {
-  //     if (count <= 6) {
-  //       count++;
-  //     } else if (count) {
-  //       count--;
-  //     }
-  //     console.log(count);
-  //   }, 500);
+  function invadersInitialPosition(invaders) {
+    for (let j = 0; j < invaders.length; j++) {
+      cells[invaders[j]].classList.add('invaders');
+    }
+  }
 
-  // }
-  invadersMap();
+  let count = 3;
+  let counter;
+  function invadersMovingPattern(counter) {
+    counter = setInterval(() => {
+      if (count <= 6) {
+        count++;
+      } else {
+        clearInterval(count);
+      }
+      console.log(count);
+    }, 500);
+  }
+
+  invadersMovingPattern(counter);
   createGrid(playerPosition);
-  // invadersMovingPattern();
-
+  invadersInitialPosition(invaders);
   document.addEventListener('keyup', handleKeyUp);
+
+
 }
 window.addEventListener('DOMContentLoaded', init);
