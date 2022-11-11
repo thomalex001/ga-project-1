@@ -1,110 +1,62 @@
-function init () {
-
-console.log('js is working!')
-
-
-
-
-
-
-const grid = document.querySelector('.grid');
-  // const start = document.querySelector('#start');
-  // const scoreDisplay = document.querySelector('#score-display')
-
-  const width = 10;
-  const gridCellCount = width * width;
+function init() {
+  const grid = document.querySelector('.grid');
   const cells = [];
-  // let pikaPosition = 0;
-  // let score = 0;
-  // let pikaCount = 0;
+  const width = 10;
+  const cellCount = width * width;
 
-  function createGrid() {
-    for (let index = 0; index < gridCellCount; index++) {
+  let playerPosition = 94;
+  let invaders = [4, 5, 6, 7];
+
+  function createGrid(startingPosition) {
+    for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div');
-      cell.setAttribute('data-index', index);
-      cells.push(cell);
+      cell.textContent = i;
       grid.appendChild(cell);
+      cells.push(cell);
     }
+    cells[startingPosition].classList.add('player');
   }
   
-  createGrid();
-  // function addPikachu(position) {
-  //   cells[position].classList.add('pika')
-  // }
+  function invadersMap() {
+    cells[invaders[0]].classList.add('invaders');
+  }
 
-  // function removePikachu(position) {
-    //   cells[position].classList.remove('pika');
-  // }
+  function handleKeyUp(event) {
+    cells[playerPosition].classList.remove('player'); // * remove player class from old position
+    const x = playerPosition % width;
 
-  // function getRandomPosition() {
-  //   const actualCellCount = gridCellCount - 1;
-  //   return Math.floor(Math.random() * actualCellCount)
-  // }
-  // function incrementScore () {
-  //   score += 100;
-  //   scoreDisplay.innerHTML = score;
-  // }
+    switch (
+      event.keyCode // * calculate the new index
+    ) {
+      case 39:
+        if (x < width - 1) playerPosition++;
+        break;
+      case 37:
+        if (x > 0) playerPosition--;
+        break;
+      default:
+        console.log('invalid key do nothing');
+    }
+    cells[playerPosition].classList.add('player'); // * add the class back at the new position
+  }
 
-  // function endGame () {
-  //   clearInterval(timer);
-  //   removePikachu(pikaPosition);
-  //   alert(score);
-  // }
-  // function startGame () {
-  //   timer = setInterval(() => {
-  //     if (pikaCount > 9) {
-  //       endGame();
-  //       return;
+  // let count = 3;
+  // let counter;
+  // function invadersMovingPattern(counter) {
+  //   counter = setInterval((invadersPosition) => {
+  //     if (count <= 6) {
+  //       count++;
+  //     } else if (count) {
+  //       count--;
   //     }
-  //     removePikachu(pikaPosition);
-  //     pikaPosition = getRandomPosition();
-  //     pikaCount++;
-  //     addPikachu(pikaPosition);
-  //   }, 1000)
+  //     console.log(count);
+  //   }, 500);
+
   // }
-  // function handleWhack(event) {
-  //   if (event.target.classList.contains('pika')) {
-  //     removePikachu(event.target.dataset.index);
-  //     incrementScore();
-  //   }
-  // }
-  
+  invadersMap();
+  createGrid(playerPosition);
+  // invadersMovingPattern();
 
-
-  // start.addEventListener('click', startGame);
-  // cells.forEach((cell) => cell.addEventListener('click', handleWhack))
-
-
-
-
-
-
-
-
-
+  document.addEventListener('keyup', handleKeyUp);
 }
-document.addEventListener('DOMContentLoaded', init);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
-  document.addEventListener('DOMContentLoaded', init);
+window.addEventListener('DOMContentLoaded', init);
