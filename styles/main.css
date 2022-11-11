@@ -4,12 +4,12 @@
 
 body {
   height: 100vh;
-  margin: 0;
+  margin: 10%;
 }
 
 
 .grid-wrapper {
-  height: 100vh;
+  height: 70vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,4 +45,16 @@ body {
   background-repeat: no-repeat;
   background-size: contain;
   cursor: pointer;
+}
+.main-section {
+  display: flex;
+  justify-content:space-around
+  width: 100vw;
+}
+aside {
+  display: flex;
+  flex-direction: column;
+  border-style: solid;
+  height: 70vh;
+  width: 30vw;
 }

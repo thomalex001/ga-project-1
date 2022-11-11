@@ -1,11 +1,13 @@
 function init() {
   const grid = document.querySelector('.grid');
+  const startGame = document.querySelector('#start-btn');
   const cells = [];
   const width = 11;
   const cellCount = width * width;
 
   let playerPosition = 115;
-  let invaders = [3, 4, 5, 6, 7, 13, 14, 15, 16];
+  let invaders = [5, 6, 7, 8];
+
 
   function createGrid(startingPosition) {
     for (let i = 0; i < cellCount; i++) {
@@ -34,28 +36,40 @@ function init() {
     cells[playerPosition].classList.add('player');
   }
 
-  function invadersInitialPosition(invaders) {
+  function addInvaders() {
     for (let j = 0; j < invaders.length; j++) {
       cells[invaders[j]].classList.add('invaders');
     }
   }
 
-  let count = 3;
-  let counter;
-  function invadersMovingPattern(counter) {
-    counter = setInterval(() => {
-      if (count <= 6) {
-        count++;
-      } else {
-        clearInterval(count);
-      }
-      console.log(count);
-    }, 500);
+  function removeInvaders() {
+    for (let j = 0; j < invaders.length; j++) {
+      cells[invaders[j]].classList.remove('invaders');
+    }
   }
 
-  invadersMovingPattern(counter);
-  createGrid(playerPosition);
-  invadersInitialPosition(invaders);
+  function moveInvaders() {
+    const leftSide = invaders[0] % width === 0;
+    const rightSide = invaders[invaders.length - 1] % width === width - 1;
+    removeInvaders()
+    for (let i = 0; i < invaders.length; i++) {
+      invaders[i] += 1;
+    }
+    addInvaders();
+  }
+ 
+  function startingGame() {
+    console.log('starting game works')
+    addInvaders(invaders);
+    setInterval(moveInvaders, 1000)
+}
+
+  
+createGrid(playerPosition);
+
+
+
+  startGame.addEventListener('click', startingGame);
   document.addEventListener('keyup', handleKeyUp);
 
 
