@@ -5,9 +5,10 @@ function init() {
   const cells = [];
   const width = 20;
   const cellCount = width * width;
-  const invadersPattern = setInterval(moveInvaders, 100);
+  const invadersPattern = setInterval(moveInvaders, 1000);
   let playerPosition = 390;
   let invaders = [9, 10, 11, 12, 13, 29, 30, 31, 32, 33];
+  let invadersShot = [];
   let shield = [321, 322, 323, 325, 326, 327, 329, 330, 332,
     333, 334, 336, 337, 338 ]
   let direction = 1;
@@ -46,7 +47,9 @@ function init() {
   }
   function addInvaders() {
     for (let j = 0; j < invaders.length; j++) {
-      cells[invaders[j]].classList.add('invaders');
+      if (!invadersShot.includes(j)) {
+        cells[invaders[j]].classList.add('invaders');
+      }
     }
   }
 
@@ -95,11 +98,11 @@ function init() {
   
   function startingGame() {
     console.log('starting game works');
-    setInterval(moveInvaders, 100)
+    setInterval(moveInvaders, 1000)
   }
   
 
-  createGrid(playerPosition);
+  createGrid();
   addShield();
   addPlayer();
   startGame.addEventListener('click', startingGame);
@@ -117,19 +120,30 @@ function init() {
 //   }
 // }
 
-function shooting(event) {
-  let ball;
-  let currentBallPosition = playerPosition;
-  function shootBall () {
-    cells[currentBallPosition].classList.remove('ball');
-    currentBallPosition -= width;
-    cells[currentBallPosition].classList.add('ball');
-  } 
-  switch(event.keyCode) {
-    case 32:
+  function shooting(event) {
+    let currentBallPosition = playerPosition;
+    function shootBall () {
+      cells[currentBallPosition].classList.remove('ball');
+      currentBallPosition -= width;
+      cells[currentBallPosition].classList.add('ball');
+      if (cells[currentBallPosition].classList.contains('invaders')) {
+        cells[currentBallPosition].classList.remove('ball');
+        cells[currentBallPosition].classList.remove('invaders');
+
+        const invaderShot = invaders.indexOf(currentBallPosition);
+        invadersShot.push(invaderShot)
+      } 
+
+
+
+
+
+    } 
+    switch(event.keyCode) {
+      case 32:
         ball = setInterval(shootBall, 100)
+    }
   }
-}
 
 
 document.addEventListener('keyup', shooting)
