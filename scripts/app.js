@@ -10,7 +10,8 @@ function init() {
   let playerPosition = 389;
   let invaders = [9, 10, 11, 12, 13, 29, 30, 31, 32, 33];
   let invadersShot = [];
-  let shield = [
+  let shieldsShot = [];
+  let shield = [301, 302, 303, 305, 306, 307, 309, 310, 312, 313, 314, 316, 317, 318,
     321, 322, 323, 325, 326, 327, 329, 330, 332, 333, 334, 336, 337, 338,
   ];
   let direction = 1;
@@ -20,7 +21,7 @@ function init() {
   function createGrid() {
     for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div');
-      cell.textContent = i;
+      // cell.textContent = i;
       grid.appendChild(cell);
       cells.push(cell);
     }
@@ -100,12 +101,14 @@ function init() {
   function restartingGame() {
     console.log('restart button works');
     clearInterval(invadersPattern);
+    clearInterval(bullet)
     removeInvaders();
   }
 
   function startingGame() {
     console.log('starting game works');
-    setInterval(moveInvaders, 100);
+    setInterval(invadersPattern);
+    setInterval(bullet)
   }
   
 
@@ -148,21 +151,28 @@ function init() {
   }
 
   function invadersShooting() {
-    for (let j = 0; j < invaders.length; j++) {
-      let currentBulletPosition = invaders[3];
-      function shootBullet() {
-        cells[currentBulletPosition].classList.remove('bullet');
-        currentBulletPosition += width;
-        cells[currentBulletPosition].classList.add('bullet');
-      }
-      setInterval(shootBullet, 100);
+    let bullet;
+    let currentBulletPosition =
+        invaders[Math.round(Math.random() * (invaders.length - 1))];
+    function shootBullet() {
+      cells[currentBulletPosition].classList.remove('bullet');
+      currentBulletPosition += width;
+      cells[currentBulletPosition].classList.add('bullet');
     }
+    if (cells[currentBulletPosition].classList.contains('shield')) {
+      clearInterval(bullet);
+      cells[currentBulletPosition].classList.remove('bullet');
+      cells[currentBulletPosition].classList.remove('shield');
+      const shieldShot = shield.indexOf(currentBulletPosition);
+      shieldsShot.push(shieldShot)
+    }
+    setInterval(shootBullet, 100);
   }
+  
+  
+  
+  bullet = setInterval(invadersShooting, 2000);
 
-
-
-
-  setInterval(invadersShooting, 2000);
 
   document.addEventListener('keyup', playerShooting);
 

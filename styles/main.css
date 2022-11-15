@@ -5,6 +5,9 @@
 body {
   margin: 10%;
   height: 80vh;
+  background-image: url('../assets/background.jpg');
+  background-position: center;
+  
 }
 .main-section {
   display: flex;
@@ -21,6 +24,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  background-image: url('../assets/background.jpg');
+  background-size: cover
+  
 }
 
 .grid {
@@ -30,12 +36,12 @@ body {
   flex-wrap: wrap;
   height: 100%;
   text-align: center;
-  height: 800px;
-  width: 800px;
+  height: 600px;
+  width: 600px;
 }
 
 .grid div {
-  border: 1px solid rgb(226, 43, 43);
+  /* border: 1px solid rgb(226, 43, 43); */
   flex-grow: 1;
   height: 5%;
   width: 5%;
@@ -44,14 +50,16 @@ body {
 .grid div.invaders {
   background-image: url('../assets/wario.png');
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 25px;
+  background-position: center;
   cursor: pointer;
 }
 
 .grid div.player {
   background-image: url('../assets/mario.png');
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 30px;
+  background-position: center;
   cursor: pointer;
 }
 
@@ -83,12 +91,20 @@ aside {
 }
 
 .shield {
-  background-color: blue;
+  background-image: url('../assets/brick.png');
+  background-size: cover;
+  background-position-x: center;
+  background-size: 37px;
 }
 
 .ball {
-  background-color: blueviolet;
+  background-image: url('../assets/ball.png');
+  background-size: cover;
+  background-position-x: center;
+  background-size: 27 px
 }
 .bullet {
-  background-color: crimson;
+  background-image: url('../assets/wario-bullet.png');
+  background-position: center;
+  background-size: cover;
 }
