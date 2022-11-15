@@ -6,8 +6,16 @@ body {
   height: 100vh;
   margin: 10%;
 }
-
-
+.main-section {
+  display: flex;
+  justify-content:start;
+  align-items: center;
+  width: 60vw;
+  height: 60vh;
+}
+.score-board {
+  display: flex;
+}
 .grid-wrapper {
   height: 70vh;
   display: flex;
@@ -36,7 +44,7 @@ body {
 .grid div.invaders {
   background-image: url('../assets/wario.png');
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   cursor: pointer;
 }
 
@@ -46,12 +54,7 @@ body {
   background-size: contain;
   cursor: pointer;
 }
-.main-section {
-  display: flex;
-  justify-content:start;
-  align-items: center;
-  width: 100vw;
-}
+
 aside {
   display: flex;
   flex-direction: column;

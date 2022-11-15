@@ -5,14 +5,17 @@ function init() {
   const cells = [];
   const width = 20;
   const cellCount = width * width;
-  const invadersPattern = setInterval(moveInvaders, 1000);
-  let playerPosition = 390;
+  const invadersPattern = setInterval(moveInvaders, 100);
+  const displayResult = document.querySelector('h3');
+  let playerPosition = 69;
   let invaders = [9, 10, 11, 12, 13, 29, 30, 31, 32, 33];
   let invadersShot = [];
   let shield = [321, 322, 323, 325, 326, 327, 329, 330, 332,
     333, 334, 336, 337, 338 ]
   let direction = 1;
   let goingRight = true;
+  let score = 0
+  
 
   function createGrid() {
     for (let i = 0; i < cellCount; i++) {
@@ -82,6 +85,11 @@ function init() {
       invaders[i] += direction;
     }
     addInvaders();
+    if (cells[playerPosition].classList.contains('invaders', 'player')) {
+      console.log('GameOVER');
+      clearInterval(invadersPattern);
+
+    }
   }
 
   function addShield() {
@@ -98,7 +106,7 @@ function init() {
   
   function startingGame() {
     console.log('starting game works');
-    setInterval(moveInvaders, 1000)
+    invadersPattern;
   }
   
 
@@ -109,16 +117,7 @@ function init() {
   restartGame.addEventListener('click', restartingGame);
   document.addEventListener('keyup', handleKeyUp);
   
-  // if (cells[playerPosition].classList.contains('shield')) {
-  //   console.log('GameOVER');
-  //   clearInterval(invadersPattern);
-  //   removeInvaders();
-  // }
-//   for (let j = 0; j < invaders.length; j++) {
-//    if (cells[invaders[j]].classList.contains('shield', 'invaders')){
-//    console.log('aliens at bottom')
-//   }
-// }
+ 
 
   function shooting(event) {
     let currentBallPosition = playerPosition;
@@ -127,12 +126,22 @@ function init() {
       currentBallPosition -= width;
       cells[currentBallPosition].classList.add('ball');
       if (cells[currentBallPosition].classList.contains('invaders')) {
+        clearInterval(ball)
         cells[currentBallPosition].classList.remove('ball');
         cells[currentBallPosition].classList.remove('invaders');
-
         const invaderShot = invaders.indexOf(currentBallPosition);
-        invadersShot.push(invaderShot)
+        invadersShot.push(invaderShot);
+        score += 100
+        displayResult.innerHTML = score
       } 
+      if (cells[currentBallPosition].classList.contains('shield')) {
+        clearInterval(ball);
+        cells[currentBallPosition].classList.remove('ball');
+      }
+      if (invadersShot.length === invaders.length) {
+        console.log('YOU WIN!');
+
+      }
 
 
 
