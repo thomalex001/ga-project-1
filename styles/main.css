@@ -3,6 +3,7 @@
 }
 
 body {
+  font-family: 'Press Start 2P', cursive;
   margin: 10%;
   height: 80vh;
   background-image: url('../assets/background.jpg');
@@ -13,18 +14,21 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
-
 }
 .game-container {
   display: flex;
   flex-direction: column;
   height: 100%;
-
+  position: relative;
 }
 .score-board {
+  position: absolute;
+  padding-left: 40px;
+  padding-right: 10px;
+  width: 100%;
+  color: white;
+  text-shadow: 2px 2px rgb(57, 145, 172);
   display: flex;
-  border-style: solid;
   justify-content: space-between;
   align-items: center;
 
@@ -41,7 +45,7 @@ body {
 
 .grid {
   align-items: center;
-  box-shadow: 0 20px 20px 0 rgba(0, 0, 0, 0.5);
+  box-shadow: 0 20px 20px 0 rgba(25, 25, 27, 0.5);
   display: flex;
   flex-wrap: wrap;
   height: 100%;
@@ -74,30 +78,39 @@ body {
 }
 
 aside {
+  box-shadow: 0 20px 20px 0 rgba(25, 25, 27, 0.5);
+  display: flex;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  border-style: solid;
-  height: 600px;
-  width: 200px;
+  justify-content:flex-end;
+  height: 650px;
+  width: 300px;
+  max-width: 300px;
+  min-width: 300px;
   margin-left: 5%;
 }
-
-.rules {
-  border-style: solid;
-  margin-bottom: 5%;
-  height: 40%;
-  width: 80%;
+li {
+  margin: 8px;
 }
+.rules {
+  color: rgba(255, 255, 255, 0.577);
+  margin: 5% 5%;
+  height: 85%;
+  width: 100%;
+  font-size: 12px;
+  line-height: 15px;
+  
+   
+}
+
 .buttons {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-style: solid;
-  height: 40%;
-  width: 80%
+  height: 30%;
+  width: 100%;
 }
 
 .shield {

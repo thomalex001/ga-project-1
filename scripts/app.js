@@ -6,7 +6,7 @@ function init() {
   const width = 20;
   const cellCount = width * width;
   const invadersPattern = setInterval(moveInvaders, 1000);
-  const displayResult = document.querySelector('h3');
+  const displayResult = document.querySelector('#points');
   let playerPosition = 389;
   let invaders = [9, 10, 11, 12, 13, 29, 30, 31, 32, 33];
   let invadersShot = [];

@@ -3,6 +3,9 @@
   <head>
     <meta charset="utf-8">
     <title>GRID GAME!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles/main.css">
     <script src="scripts/app.js" charset="utf-8"></script>
   </head>
@@ -12,16 +15,28 @@
     <section class='main-section'>
       <div class='game-container'>
       <div class='score-board'>
-          <div class='lives'>Lives</div>
-          <div class='winner'>Winner</div>
-          <div class='score'><h3>Score is</h3></div>
+          <div class='lives'><h3>Lives<span id='lives'></span></h3></div>
+          <div class='winner'></div>
+          <div class='score'><h3>Pts <span id='points'>0</span></h3></div>
         </div>
         <div class="grid-wrapper">
         <div class="grid"></div>
       </div>
     </div>
     <aside>
-      <div class='rules'>Rules</div>
+      <div class='rules'>
+        <h3>// GAME RULES</h3>
+        <ul>          
+          <li>A troup of Wario fighters are ascending on Mario World...</li>
+          <li> You are the only person who can stop them!!!</li>
+          <li>Move Mario left: ← or right: →</li>
+          <li>Shoot fireballs at the Wario fighters with the space bar.</li>
+          <li>Each Wario fighters killed will get you 100pts!</li>
+          <li>Destroy ALL Wario fighters to win the game!</li>
+          <li>Make sure not to get hit by Spinies thrown at you or you will lose a life.</li>
+          <li>If you lose 3 lives or if the Wario fighters land on Mario World.. it's GAMEOVER!</li>
+        </ul>           
+      </div>
       <div class='buttons'>
         <button id='start-btn'>Play Game</button>
         <button id='restart-btn'>Restart</button>
