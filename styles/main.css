@@ -11,13 +11,23 @@ body {
 }
 .main-section {
   display: flex;
-  justify-content:start;
+  justify-content: center;
   align-items: center;
-  width: 60vw;
-  height: 60vh;
+  height: 100%;
+
+}
+.game-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
 }
 .score-board {
   display: flex;
+  border-style: solid;
+  justify-content: space-between;
+  align-items: center;
+
 }
 .grid-wrapper {
   height: 70vh;
@@ -52,7 +62,6 @@ body {
   background-repeat: no-repeat;
   background-size: 25px;
   background-position: center;
-  cursor: pointer;
 }
 
 .grid div.player {
@@ -61,6 +70,7 @@ body {
   background-size: 30px;
   background-position: center;
   cursor: pointer;
+  height: 6%;
 }
 
 aside {
@@ -69,8 +79,8 @@ aside {
   align-items: center;
   justify-content: center;
   border-style: solid;
-  height: 800px;
-  width: 20vw;
+  height: 600px;
+  width: 200px;
   margin-left: 5%;
 }
 
@@ -78,7 +88,7 @@ aside {
   border-style: solid;
   margin-bottom: 5%;
   height: 40%;
-  width: 80%
+  width: 80%;
 }
 .buttons {
   display: flex;
@@ -101,10 +111,11 @@ aside {
   background-image: url('../assets/ball.png');
   background-size: cover;
   background-position-x: center;
-  background-size: 27 px
+  background-size: 25px
 }
 .bullet {
   background-image: url('../assets/wario-bullet.png');
   background-position: center;
   background-size: cover;
+
 }
