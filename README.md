@@ -15,6 +15,8 @@ make aliens as an array
 
 
 CSS: 
+Background will be Mario Gameplay
+Bullets will be ball of fire
 
 
 
@@ -23,3 +25,27 @@ SOUNDS:
 2. add shooting sounds for each
 4. add hitting sounds
 3. add start/reset button sounds
+
+
+DAY ONE:
+
+HTML 
+Created most HTML structure based one wireframe.
+
+CSS:
+styled the grid and used flexbox to move <aside> to the right.
+Created Play Game and Restart buttons. Linked PlayGame button to JS. Play Game button functioning.
+
+JS:
+Created Grid 10*10
+Added player and invaders on grid
+
+Got stuck with invaders moving pattern, for some reason they would bounce on each side only for two lines.
+Used "!goingRight" with a bang operator instead of "goingLeft", also increased grid to 20*20 as I was getting an error with 10*10.
+
+
+
+DAY TWO :
+
+Shooting:
+if e.keycode=32

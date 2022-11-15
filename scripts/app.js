@@ -1,15 +1,17 @@
 function init() {
   const grid = document.querySelector('.grid');
   const startGame = document.querySelector('#start-btn');
+  const restartGame = document.querySelector('#restart-btn');
   const cells = [];
   const width = 20;
   const cellCount = width * width;
 
-  let playerPosition = 115;
+  let playerPosition = 390;
   let invaders = [9, 10, 11, 12, 13, 29, 30, 31, 32, 33];
+  let shield = [321, 322, 323, 325, 326, 327, 329, 330, 332,
+    333, 334, 336, 337, 338 ]
   let direction = 1;
   let goingRight = true;
-  let goingLeft = true;
 
   function createGrid() {
     for (let i = 0; i < cellCount; i++) {
@@ -19,7 +21,7 @@ function init() {
       cells.push(cell);
     }
   }
-  function addPlayer () {
+  function addPlayer() {
     cells[playerPosition].classList.add('player');
   }
   function removePlayer() {
@@ -28,7 +30,7 @@ function init() {
 
   function handleKeyUp(event) {
     const x = playerPosition % width;
-    removePlayer()
+    removePlayer();
 
     switch (event.keyCode) {
       case 39:
@@ -40,7 +42,7 @@ function init() {
       default:
         console.log('invalid key do nothing');
     }
-    addPlayer()
+    addPlayer();
   }
   function addInvaders() {
     for (let j = 0; j < invaders.length; j++) {
@@ -56,7 +58,7 @@ function init() {
   function moveInvaders() {
     const leftSide = invaders[0] % width === 0;
     const rightSide = invaders[invaders.length - 1] % width === width - 1;
-    removeInvaders()
+    removeInvaders();
 
     if (rightSide && goingRight) {
       for (let i = 0; i < invaders.length; i++) {
@@ -78,22 +80,34 @@ function init() {
     }
     addInvaders();
   }
- 
+
+  function addShield() {
+    for (let j = 0; j < shield.length; j++) {
+      cells[shield[j]].classList.add('shield');
+    }
+  }
+
   function startingGame() {
-    console.log('starting game works')
+    console.log('starting game works');
     addInvaders(invaders);
-    addPlayer()
+    addPlayer();
     setInterval(moveInvaders, 100);
-}
+    addShield();
+  }
 
-  
-createGrid(playerPosition);
+  function restartingGame() {
+    console.log('restart button works');
+    removePlayer();
+    clearInterval(invadersPattern);
+    removeInvaders();
+  }
 
-
+  createGrid(playerPosition);
 
   startGame.addEventListener('click', startingGame);
+  restartGame.addEventListener('click', restartingGame);
   document.addEventListener('keyup', handleKeyUp);
-
+  
 
 }
 window.addEventListener('DOMContentLoaded', init);
