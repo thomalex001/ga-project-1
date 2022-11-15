@@ -5,7 +5,7 @@ function init() {
   const cells = [];
   const width = 20;
   const cellCount = width * width;
-
+  const invadersPattern = setInterval(moveInvaders, 100);
   let playerPosition = 390;
   let invaders = [9, 10, 11, 12, 13, 29, 30, 31, 32, 33];
   let shield = [321, 322, 323, 325, 326, 327, 329, 330, 332,
@@ -87,27 +87,54 @@ function init() {
     }
   }
 
-  function startingGame() {
-    console.log('starting game works');
-    addInvaders(invaders);
-    addPlayer();
-    setInterval(moveInvaders, 100);
-    addShield();
-  }
-
   function restartingGame() {
     console.log('restart button works');
-    removePlayer();
     clearInterval(invadersPattern);
     removeInvaders();
   }
+  
+  function startingGame() {
+    console.log('starting game works');
+    setInterval(moveInvaders, 100)
+  }
+  
 
   createGrid(playerPosition);
-
+  addShield();
+  addPlayer();
   startGame.addEventListener('click', startingGame);
   restartGame.addEventListener('click', restartingGame);
   document.addEventListener('keyup', handleKeyUp);
   
+  // if (cells[playerPosition].classList.contains('shield')) {
+  //   console.log('GameOVER');
+  //   clearInterval(invadersPattern);
+  //   removeInvaders();
+  // }
+//   for (let j = 0; j < invaders.length; j++) {
+//    if (cells[invaders[j]].classList.contains('shield', 'invaders')){
+//    console.log('aliens at bottom')
+//   }
+// }
+
+function shooting(event) {
+  let ball;
+  let currentBallPosition = playerPosition;
+  function shootBall () {
+    cells[currentBallPosition].classList.remove('ball');
+    currentBallPosition -= width;
+    cells[currentBallPosition].classList.add('ball');
+  } 
+  switch(event.keyCode) {
+    case 32:
+        ball = setInterval(shootBall, 100)
+  }
+}
+
+
+document.addEventListener('keyup', shooting)
+
+
 
 }
 window.addEventListener('DOMContentLoaded', init);
