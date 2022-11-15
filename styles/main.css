@@ -3,8 +3,8 @@
 }
 
 body {
-  height: 100vh;
   margin: 10%;
+  height: 80vh;
 }
 .main-section {
   display: flex;
@@ -61,7 +61,7 @@ aside {
   align-items: center;
   justify-content: center;
   border-style: solid;
-  height: 90vh;
+  height: 800px;
   width: 20vw;
   margin-left: 5%;
 }
@@ -88,4 +88,7 @@ aside {
 
 .ball {
   background-color: blueviolet;
+}
+.bullet {
+  background-color: crimson;
 }
