@@ -94,7 +94,8 @@ li {
   margin: 8px;
 }
 .rules {
-  color: rgba(255, 255, 255, 0.577);
+  color: rgb(248, 239, 239);
+  text-shadow: 2px 2px rgb(57, 145, 172);
   margin: 5% 5%;
   height: 85%;
   width: 100%;
