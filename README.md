@@ -72,13 +72,18 @@ Must To:
 <!-- Add Game Over to the Screen -->
 <!-- Remove turtles when I win -->
 Collision when two bullets hit each other
-Fix Play and Restart buttons
+Play button click multiple times
+Restart button doesn't remove aliens or bullets
+
+Fighters moving right
 Remove bullets when I win
 Only throw bullets from invaders still alive
 Fix bug when fireballs are thrown too fast
 Add Sounds
 Reduce number of bullets
-Stope turtles after width
+Stop turtles after width
 
 TO DO:
 Add collision styling when bullet hits
+Move Mario left to right
+Invaders not moving to the end when shot on the side

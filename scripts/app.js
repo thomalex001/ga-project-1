@@ -12,7 +12,7 @@ function init() {
   let playerPosition = 389;
   let invaders = [
     44, 56, 64, 65, 70, 75, 76, 84, 85, 86, 89, 90, 91, 94, 95, 96, 105, 106,
-    107, 109, 110, 111, 113, 114, 115, 126, 127, 128, 129, 131, 132, 133, 134, 148,
+    107, 109, 110, 111, 113, 114, 115, 126, 127, 128, 131, 132, 133, 134, 148,
     152,
   ];
   let invadersShot = [];
@@ -71,8 +71,8 @@ function init() {
     }
   }
   function moveInvaders() {
-    const leftSide = invaders[0] % width === 0;
-    const rightSide = invaders[invaders.length - 1] % width === width - 1;
+    const leftSide = invaders.some((e) => e % width === 0);
+    const rightSide = invaders.some((e) => e % width === width - 1);
     removeInvaders();
 
     if (rightSide && goingRight) {
@@ -97,6 +97,7 @@ function init() {
     if (cells[playerPosition].classList.contains('invaders', 'player')) {
       displayResult.innerHTML = 'GAME OVER!!!';
       clearInterval(invadersPattern);
+      clearInterval(invadersShootingInterval);
     }
   }
 
@@ -142,7 +143,8 @@ function init() {
         cells[currentBallPosition].classList.remove('ball');
         cells[currentBallPosition].classList.remove('invaders');
         const invaderShot = invaders.indexOf(currentBallPosition);
-        invadersShot.push(invaderShot);
+        invaders.splice(invaderShot, 1)
+        // invadersShot.push(invaderShot);
         points += 100;
         displayPoints.innerHTML = points;
       }

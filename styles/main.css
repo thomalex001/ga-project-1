@@ -114,7 +114,12 @@ li {
   height: 30%;
   width: 100%;
 }
-
+#start-btn {
+  cursor: pointer;
+}
+#restart-btn{
+  cursor: pointer;
+}
 .shield {
   background-image: url('../assets/brick.png');
   background-size: cover;
