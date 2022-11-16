@@ -71,17 +71,18 @@ Must To:
 <!-- Add lives to JS -->
 <!-- Add Game Over to the Screen -->
 <!-- Remove turtles when I win -->
-Collision when two bullets hit each other
+<!-- Fighters moving right -->
+<!-- Remove bullets when I win -->
 Play button click multiple times
-Restart button doesn't remove aliens or bullets
+Collision when two bullets hit each other
+Turtles don't disapear
+Restart button doesn't remove aliens or bullets after playing.
 
-Fighters moving right
-Remove bullets when I win
 Only throw bullets from invaders still alive
 Fix bug when fireballs are thrown too fast
 Add Sounds
 Reduce number of bullets
-Stop turtles after width
+Stop turtles after height
 
 TO DO:
 Add collision styling when bullet hits

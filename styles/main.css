@@ -56,7 +56,7 @@ body {
 }
 
 .grid div {
-  /* border: 1px solid rgb(226, 43, 43); */
+  border: 1px solid rgb(226, 43, 43);
   flex-grow: 1;
   height: 5%;
   width: 5%;
@@ -97,13 +97,10 @@ li {
 .rules {
   color: rgb(248, 239, 239);
   text-shadow: 2px 2px rgb(57, 145, 172);
-  margin: 5% 5%;
   height: 85%;
   width: 100%;
   font-size: 12px;
-  line-height: 15px;
-  
-   
+  line-height: 15px;  
 }
 
 .buttons {
@@ -116,9 +113,39 @@ li {
 }
 #start-btn {
   cursor: pointer;
+  font-family: 'Press Start 2P', cursive;
+  text-align: center;
+	display: inline-block;
+	margin: 5px;
+  font-weight: bold;
+  padding: 10px 0 10px 10px ;
+  color: white;
+  text-shadow: 2px 2px rgb(57, 145, 172);
+  background-color: rgba(39, 212, 51, 0.775);
+  border-radius: 15px;
+  box-shadow: 0 5px 5px 0 rgba(43, 103, 109, 0.5);
+  cursor: pointer;
+  width: 60%;
+  height: 50%;
+  font-size: 40px
+
 }
 #restart-btn{
   cursor: pointer;
+  font-family: 'Press Start 2P', cursive;
+  text-align: center;
+	display: inline-block;
+	margin: 10px;
+  font-weight: bold;
+  padding: 10px 0 10px 10px ;
+  color: white;
+  font-size: 20px;
+  text-shadow: 2px 2px rgb(57, 145, 172);
+  box-shadow: 0 5px 5px 0 rgba(9, 15, 16, 0.5);
+  background-color:  rgba(247, 72, 56, 0.847);
+  border-radius: 7px;
+  cursor: pointer;
+  height : 60%
 }
 .shield {
   background-image: url('../assets/brick.png');

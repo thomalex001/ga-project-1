@@ -2,10 +2,11 @@ function init() {
   const grid = document.querySelector('.grid');
   const startGame = document.querySelector('#start-btn');
   const restartGame = document.querySelector('#restart-btn');
+  const marioReggae = document.querySelector('#mario-reggae');
+  const playSounds = document.querySelector('#play-sounds');
   const cells = [];
   const width = 20;
   const cellCount = width * width;
-  let invadersPattern = setInterval(moveInvaders, 1000);
   const displayLives = document.querySelector('#lives');
   const displayResult = document.querySelector('#result');
   const displayPoints = document.querySelector('#points');
@@ -15,6 +16,7 @@ function init() {
     107, 109, 110, 111, 113, 114, 115, 126, 127, 128, 131, 132, 133, 134, 148,
     152,
   ];
+  // let invaders = [26];
   let invadersShot = [];
   let shieldsShot = [];
   let shield = [
@@ -25,6 +27,10 @@ function init() {
   let goingRight = true;
   let points = 0;
   let lives = 3;
+  let invadersShootingInterval;
+  let moveInvadersInterval;
+  let bullet;
+  let ball;
 
   function createGrid() {
     for (let i = 0; i < cellCount; i++) {
@@ -95,9 +101,7 @@ function init() {
     }
     addInvaders();
     if (cells[playerPosition].classList.contains('invaders', 'player')) {
-      displayResult.innerHTML = 'GAME OVER!!!';
-      clearInterval(invadersPattern);
-      clearInterval(invadersShootingInterval);
+      gameOver();
     }
   }
 
@@ -109,21 +113,34 @@ function init() {
 
   function restartingGame() {
     console.log('restart button works');
-    clearInterval(invadersPattern);
-    removeInvaders();
+    clearInterval(moveInvadersInterval);
     clearInterval(invadersShootingInterval);
+    removeInvaders();
+    clearInterval(ball);
+    document.removeEventListener('keyup', playerShooting);
     displayPoints.innerHTML = null;
     displayLives.innerHTML = null;
   }
-
   function startingGame() {
     console.log('starting game works');
-    setInterval(invadersPattern);
-    setInterval(bullet);
+    invadersShootingInterval = setInterval(invadersShooting, 2000);
+    moveInvadersInterval = setInterval(moveInvaders, 1000);
+    document.addEventListener('keyup', playerShooting);
+    marioReggae.src = './sounds/mario-reggae.mp3';
+    marioReggae.play();
+    
   }
-  // function playerWins() {
-  //   displayResult.innerHTML = 'YOU WIN!!!';
-  // }
+  function gameOver() {
+    displayResult.innerHTML = 'GAME OVER :(';
+    clearInterval(moveInvadersInterval);
+    clearInterval(invadersShootingInterval);
+    document.removeEventListener('keyup', playerShooting);
+  }
+  function playerWins() {
+    displayResult.innerHTML = 'YOU WIN!!!';
+    clearInterval(invadersShootingInterval);
+    document.removeEventListener('keyup', playerShooting);
+  }
 
   createGrid();
   addShield();
@@ -139,12 +156,10 @@ function init() {
       currentBallPosition -= width;
       cells[currentBallPosition].classList.add('ball');
       if (cells[currentBallPosition].classList.contains('invaders')) {
-        clearInterval(ball);
         cells[currentBallPosition].classList.remove('ball');
         cells[currentBallPosition].classList.remove('invaders');
         const invaderShot = invaders.indexOf(currentBallPosition);
-        invaders.splice(invaderShot, 1)
-        // invadersShot.push(invaderShot);
+        invaders.splice(invaderShot, 1);
         points += 100;
         displayPoints.innerHTML = points;
       }
@@ -153,46 +168,51 @@ function init() {
         cells[currentBallPosition].classList.remove('ball');
       }
       if (invadersShot.length === invaders.length) {
-        clearInterval(invadersShootingInterval);
-        displayResult.innerHTML = 'YOU WIN!!!';
+        // clearInterval(invadersShootingInterval);
+        // displayResult.innerHTML = 'YOU WIN!!!';
+        playerWins();
       }
     }
-    switch (event.keyCode) {
-      case 32:
-        ball = setInterval(shootBall, 100);
+    if (event.keyCode === 32) {
+      ball = setInterval(shootBall, 100);
+      playSounds.src = './sounds/ball.mp3';
+      playSounds.play();
     }
   }
 
   function invadersShooting() {
-    let bullet = null;
     let currentBulletPosition =
       invaders[Math.round(Math.random() * (invaders.length - 1))];
+
     bullet = setInterval(() => {
-      cells[currentBulletPosition].classList.remove('bullet');
-      currentBulletPosition += width;
-      cells[currentBulletPosition].classList.add('bullet');
-      if (cells[currentBulletPosition].classList.contains('shield')) {
-        clearInterval(bullet);
+      if (currentBulletPosition < 400) {
+        // console.log(cells); // 400
+        // console.log(currentBulletPosition); // 369
+        // console.log(cells[currentBulletPosition]);
         cells[currentBulletPosition].classList.remove('bullet');
-        cells[currentBulletPosition].classList.remove('shield');
-        const shieldShot = shield.indexOf(currentBulletPosition);
-        shieldsShot.push(shieldShot);
-      }
-      if (cells[currentBulletPosition].classList.contains('player')) {
-        lives -= 1;
-        displayLives.innerHTML = lives;
-      }
-      if (lives < 0) {
-        clearInterval(bullet);
-        clearInterval(invadersPattern);
-        cells[currentBulletPosition].classList.remove('bullet');
-        displayLives.innerHTML = null;
-        displayResult.innerHTML = 'GAME OVER!!!';
+        currentBulletPosition += width; // 369 + 20 = 389
+        cells[currentBulletPosition].classList.add('bullet');
+        if (cells[currentBulletPosition].classList.contains('shield')) {
+          clearInterval(bullet);
+          cells[currentBulletPosition].classList.remove('bullet');
+          cells[currentBulletPosition].classList.remove('shield');
+          const shieldShot = shield.indexOf(currentBulletPosition);
+          shieldsShot.push(shieldShot);
+        }
+        if (cells[currentBulletPosition].classList.contains('player')) {
+          lives -= 1;
+          displayLives.innerHTML = lives;
+        }
+        if (lives < 1) {
+          cells[currentBulletPosition].classList.remove('bullet');
+          gameOver();
+        }
       }
     }, 200);
   }
 
-  const invadersShootingInterval = setInterval(invadersShooting, 2000); 
-  document.addEventListener('keyup', playerShooting);
+
+
+
 }
 window.addEventListener('DOMContentLoaded', init);
