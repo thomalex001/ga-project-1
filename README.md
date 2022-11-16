@@ -47,5 +47,34 @@ Used "!goingRight" with a bang operator instead of "goingLeft", also increased g
 
 DAY TWO :
 
-Shooting:
-if e.keycode=32
+HTML:
+. Made some tweaks to the structure to adapt CSS. Added <span> elements, added another container for score-board.
+. Added all content such as GAME RULES, SCORE, LIVES.
+. Added retro font for the whole page
+
+JS:
+. Created shooting functions for both Player (with space bar) and Invaders (randomly shooting in intervals)
+. 
+
+
+CSS:
+. Styled the page with background theme Mario World.
+. Added Mario's fireballs
+. Added Wario Fighters "Spinies" as bullets
+. Added brick wall as Mario's shield
+. Added box-shadow on both game-container and <aside> container to add some depth to the game
+
+DAY THREE:
+
+Must To:
+Collision when bullet hits brick wall
+Collision when two bullets hit each other
+Fix Play and Restart buttons
+Add lives to JS
+Only throw bullets from invaders still alive
+Fix bug when fireballs are thrown too fast
+Add Game Over to the Screen
+Add Sounds
+
+TO DO:
+Add collision styling when bullet hits
