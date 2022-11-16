@@ -67,14 +67,16 @@ CSS:
 DAY THREE:
 
 Must To:
-Collision when bullet hits brick wall
-Collision when two bullets hit each other
-Fix Play and Restart buttons
+<!-- Collision when bullet hits brick wall -->
 Add lives to JS
+Fix Play and Restart buttons
+Collision when two bullets hit each other
 Only throw bullets from invaders still alive
 Fix bug when fireballs are thrown too fast
 Add Game Over to the Screen
 Add Sounds
+Redue number of bullets
+Stope turtles after width
 
 TO DO:
 Add collision styling when bullet hits

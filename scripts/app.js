@@ -6,17 +6,20 @@ function init() {
   const width = 20;
   const cellCount = width * width;
   const invadersPattern = setInterval(moveInvaders, 1000);
-  const displayResult = document.querySelector('#points');
+  const displayPoints = document.querySelector('#points');
+  const displayLives = document.querySelector('#lives');
   let playerPosition = 389;
   let invaders = [9, 10, 11, 12, 13, 29, 30, 31, 32, 33];
   let invadersShot = [];
   let shieldsShot = [];
-  let shield = [301, 302, 303, 305, 306, 307, 309, 310, 312, 313, 314, 316, 317, 318,
-    321, 322, 323, 325, 326, 327, 329, 330, 332, 333, 334, 336, 337, 338,
+  let shield = [
+    301, 302, 303, 305, 306, 307, 309, 310, 312, 313, 314, 316, 317, 318, 321,
+    322, 323, 325, 326, 327, 329, 330, 332, 333, 334, 336, 337, 338,
   ];
   let direction = 1;
   let goingRight = true;
-  let score = 0;
+  let points = 0;
+  let lives = 3;
 
   function createGrid() {
     for (let i = 0; i < cellCount; i++) {
@@ -101,16 +104,15 @@ function init() {
   function restartingGame() {
     console.log('restart button works');
     clearInterval(invadersPattern);
-    clearInterval(bullet)
+    clearInterval(bullet);
     removeInvaders();
   }
 
   function startingGame() {
     console.log('starting game works');
     setInterval(invadersPattern);
-    setInterval(bullet)
+    setInterval(bullet);
   }
-  
 
   createGrid();
   addShield();
@@ -118,8 +120,6 @@ function init() {
   startGame.addEventListener('click', startingGame);
   restartGame.addEventListener('click', restartingGame);
   document.addEventListener('keyup', handleKeyUp);
-  
- 
 
   function playerShooting(event) {
     let currentBallPosition = playerPosition;
@@ -133,8 +133,8 @@ function init() {
         cells[currentBallPosition].classList.remove('invaders');
         const invaderShot = invaders.indexOf(currentBallPosition);
         invadersShot.push(invaderShot);
-        score += 100;
-        displayResult.innerHTML = score;
+        points += 100;
+        displayPoints.innerHTML = points;
       }
       if (cells[currentBallPosition].classList.contains('shield')) {
         clearInterval(ball);
@@ -151,32 +151,33 @@ function init() {
   }
 
   function invadersShooting() {
-    let bullet;
+    let bullet = null;
     let currentBulletPosition =
-        invaders[Math.round(Math.random() * (invaders.length - 1))];
-    function shootBullet() {
+      invaders[Math.round(Math.random() * (invaders.length - 1))];
+    bullet = setInterval(() => {
       cells[currentBulletPosition].classList.remove('bullet');
       currentBulletPosition += width;
       cells[currentBulletPosition].classList.add('bullet');
-    }
-    if (cells[currentBulletPosition].classList.contains('shield')) {
-      clearInterval(bullet);
-      cells[currentBulletPosition].classList.remove('bullet');
-      cells[currentBulletPosition].classList.remove('shield');
-      const shieldShot = shield.indexOf(currentBulletPosition);
-      shieldsShot.push(shieldShot)
-    }
-    setInterval(shootBullet, 100);
-  }
-  
-  
-  
-  bullet = setInterval(invadersShooting, 2000);
+      if (cells[currentBulletPosition].classList.contains('shield')) {
+        clearInterval(bullet);
+        cells[currentBulletPosition].classList.remove('bullet');
+        cells[currentBulletPosition].classList.remove('shield');
+        const shieldShot = shield.indexOf(currentBulletPosition);
+        shieldsShot.push(shieldShot);
+      }
+      if (cells[currentBulletPosition].classList.contains('player')) {
+        lives -= 1;
+        displayLives.innerHTML = lives
+      }
+      if (lives < 0) {
 
+      }
+    }, 300);
+  }
+  setInterval(invadersShooting, 2000);
+
+ 
 
   document.addEventListener('keyup', playerShooting);
-
-
-
 }
 window.addEventListener('DOMContentLoaded', init);
