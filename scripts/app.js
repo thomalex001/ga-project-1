@@ -5,12 +5,16 @@ function init() {
   const cells = [];
   const width = 20;
   const cellCount = width * width;
-  const invadersPattern = setInterval(moveInvaders, 1000);
+  let invadersPattern = setInterval(moveInvaders, 1000);
   const displayLives = document.querySelector('#lives');
   const displayResult = document.querySelector('#result');
   const displayPoints = document.querySelector('#points');
   let playerPosition = 389;
-  let invaders = [9, 10, 11, 12, 13, 29, 30, 31, 32, 33];
+  let invaders = [
+    44, 56, 64, 65, 70, 75, 76, 84, 85, 86, 89, 90, 91, 94, 95, 96, 105, 106,
+    107, 109, 110, 111, 113, 114, 115, 126, 127, 128, 129, 131, 132, 133, 134, 148,
+    152,
+  ];
   let invadersShot = [];
   let shieldsShot = [];
   let shield = [
@@ -105,8 +109,10 @@ function init() {
   function restartingGame() {
     console.log('restart button works');
     clearInterval(invadersPattern);
-    clearInterval(bullet);
     removeInvaders();
+    clearInterval(invadersShootingInterval);
+    displayPoints.innerHTML = null;
+    displayLives.innerHTML = null;
   }
 
   function startingGame() {
@@ -183,8 +189,8 @@ function init() {
       }
     }, 200);
   }
-  let invadersShootingInterval = setInterval(invadersShooting, 2000); 
 
+  const invadersShootingInterval = setInterval(invadersShooting, 2000); 
   document.addEventListener('keyup', playerShooting);
 }
 window.addEventListener('DOMContentLoaded', init);
