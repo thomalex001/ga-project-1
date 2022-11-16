@@ -68,14 +68,15 @@ DAY THREE:
 
 Must To:
 <!-- Collision when bullet hits brick wall -->
-Add lives to JS
+<!-- Add lives to JS -->
+Add Game Over to the Screen
+Remove turtles when I win
 Fix Play and Restart buttons
 Collision when two bullets hit each other
 Only throw bullets from invaders still alive
 Fix bug when fireballs are thrown too fast
-Add Game Over to the Screen
 Add Sounds
-Redue number of bullets
+Reduce number of bullets
 Stope turtles after width
 
 TO DO:
