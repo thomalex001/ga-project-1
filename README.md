@@ -88,17 +88,17 @@ DAY FOUR:
 <!-- Responsive design -->
 <!-- Restart button doesn't remove aliens or bullets after playing. -->
 <!-- Keep only Play button and change innerHTML when clicked -->
+<!-- Stop balls after width -->
+<!-- Ball kills too many invaders -->
+<!-- Turtles get stuck -->
+<!-- Fireballs are going overgrid -->
 
 
-Ball kills too many invaders
-Turtles get stuck
 Collision when two bullets hit each other
 Fix bug when fireballs are thrown too fast
-Fireballs are going overgrid
 
 collision (explosion) when bullet or ball hits
 Background dark when game over
-Stop balls after width
 
 Add Sounds
 Reduce number of bullets
@@ -107,6 +107,9 @@ Only throw bullets from invaders still alive
 TO DO:
 Add collision styling when bullet hits
 Move Mario left to right
+
+
+
 
 <!-- Collision when bullet hits brick wall -->
 <!-- Add lives to JS -->

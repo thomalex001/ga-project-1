@@ -133,23 +133,6 @@ li {
   font-size: 40px
 
 }
-/* .restart-btn {
-  cursor: pointer;
-  font-family: 'Press Start 2P', cursive;
-  text-align: center;
-	display: inline-block;
-	margin: 10px;
-  font-weight: bold;
-  padding: 10px 0 10px 10px ;
-  color: white;
-  font-size: 20px;
-  text-shadow: 2px 2px rgb(57, 145, 172);
-  box-shadow: 0 5px 5px 0 rgba(9, 15, 16, 0.5);
-  background-color:  rgba(247, 72, 56, 0.847);
-  border-radius: 7px;
-  cursor: pointer;
-  height : 60%
-} */
 .shield {
   background-image: url('../assets/brick.png');
   background-size: cover;
@@ -161,7 +144,8 @@ li {
   background-image: url('../assets/ball.png');
   background-size: cover;
   background-position-x: center;
-  background-size: 25px
+  background-size: 30px;
+  
 }
 .bullet {
   background-image: url('../assets/wario-bullet.png');

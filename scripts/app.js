@@ -11,6 +11,8 @@ function init() {
   
   const marioReggae = document.querySelector('#mario-reggae');
   const playSounds = document.querySelector('#play-sounds');
+  const playMoreSounds = document.querySelector('#play-more-sounds');
+
   
   const invadersShot = [];
   const shieldsShot = [];
@@ -146,13 +148,15 @@ function init() {
       321, 322, 323, 325, 326, 327, 329, 
       330, 332, 333, 334, 336, 337, 338
     ];
-    invadersShootingInterval = setInterval(invadersShooting, 200);
+    invadersShootingInterval = setInterval(invadersShooting, 1500);
     moveInvadersInterval = setInterval(moveInvaders, 1000);
     document.addEventListener("keyup", playerShooting);
     document.addEventListener('keyup', handleKeyUp);
     addShield();
-    // marioReggae.src = './sounds/mario-reggae.mp3';
-    // marioReggae.play();
+    marioReggae.src = './sounds/mario-reggae.mp3';
+    playSounds.src = './sounds/coin.mp3';
+    marioReggae.play();
+    playSounds.play();
   }
   function gameOver() {
     displayResult.innerHTML = "GAME OVER :(";
@@ -160,6 +164,9 @@ function init() {
     clearInterval(moveInvadersInterval);
     clearInterval(invadersShootingInterval);
     document.removeEventListener("keyup", playerShooting);
+    playSounds.src = './sounds/game-over.mp3';
+    marioReggae.pause();
+    playSounds.play();
   }
   function playerWins() {
     displayResult.innerHTML = "YOU WIN!!!";
@@ -176,7 +183,7 @@ function init() {
   function playerShooting(event) {
     let currentBallPosition = playerPosition;
     function shootBall() {
-     
+     console.log(shootBall);
       const y = Math.floor(currentBallPosition / width)
       if (y === 0) {
         cells[currentBallPosition].classList.remove("ball");
@@ -201,12 +208,14 @@ function init() {
       }
     } if (event.keyCode === 32) {
       ball = setInterval(shootBall, 100);
-      // playSounds.src = "./sounds/ball.mp3";
-      // playSounds.play();
+      playSounds.src = "./sounds/ball.mp3";
+      playSounds.play();
     }
   }
 
   function invadersShooting() {
+    playSounds.src = './sounds/bullet.wav';
+    playSounds.play();
     let currentBulletPosition =
       invaders[Math.round(Math.random() * (invaders.length - 1))];
     bullet = setInterval(() => {
@@ -225,6 +234,8 @@ function init() {
           if (cells[currentBulletPosition].classList.contains("player")) {
             lives -= 1;
             displayLives.innerHTML = lives;
+            playMoreSounds.src = './sounds/mario-oof.mp3';
+            playMoreSounds.play();
           }
           if (lives === 0) {
             gameOver();
