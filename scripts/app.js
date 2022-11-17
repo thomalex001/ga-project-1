@@ -14,7 +14,6 @@ function init() {
   const playMoreSounds = document.querySelector('#play-more-sounds');
 
   
-  const invadersShot = [];
   const shieldsShot = [];
 
   let direction = 1;
@@ -22,18 +21,17 @@ function init() {
   let points = 0;
   let lives = 3;
   let invadersShootingInterval;
-  let collisionInterval;
   let moveInvadersInterval;
   let bullet;
   let ball;
   let playerPosition = 389;
-  let invaders = [
-    44, 56, 64, 65, 70, 75, 76, 84,
-    85, 86, 89, 90, 91, 94, 95, 96,
-    105, 106, 107, 109, 110, 111,
-    113, 114, 115, 126, 127, 128, 
-    131, 132, 133, 134, 148, 152
-  ];
+  let invaders = [127, 128]
+  //   44, 56, 64, 65, 70, 75, 76, 84,
+  //   85, 86, 89, 90, 91, 94, 95, 96,
+  //   105, 106, 107, 109, 110, 111,
+  //   113, 114, 115, 126, 127, 128, 
+  //   131, 132, 133, 134, 148, 152
+  // ];
   let shield = [
     301, 302, 303, 305, 306, 307,
     309, 310, 312, 313, 314, 316,
@@ -75,9 +73,7 @@ function init() {
 
   function addInvaders() {
     for (let j = 0; j < invaders.length; j++) {
-      if (!invadersShot.includes(j)) {
-        cells[invaders[j]].classList.add("invaders");
-      }
+      cells[invaders[j]].classList.add("invaders");
     }
   }
 
@@ -137,13 +133,13 @@ function init() {
     startGame.style.fontSize = "22px";
 
     // new game //
-    invaders = [
-      44, 56, 64, 65, 70, 75, 76, 84,
-      85, 86, 89, 90, 91, 94, 95, 96,
-      105, 106, 107, 109, 110, 111, 
-      113, 114, 115, 126, 127, 128, 
-      131, 132, 133, 134, 148, 152
-    ];
+    invaders = [127, 128]
+    //   44, 56, 64, 65, 70, 75, 76, 84,
+    //   85, 86, 89, 90, 91, 94, 95, 96,
+    //   105, 106, 107, 109, 110, 111, 
+    //   113, 114, 115, 126, 127, 128, 
+    //   131, 132, 133, 134, 148, 152
+    // ];
     shield = [
       301, 302, 303, 305, 306, 307, 309,
       310, 312, 313, 314, 316, 317, 318,
@@ -203,13 +199,14 @@ function init() {
         cells[currentBallPosition].classList.remove("invaders");
         const invaderShot = invaders.indexOf(currentBallPosition);
         invaders.splice(invaderShot, 1);
+        if (invaders.length === 0) {
+          playerWins();
+        }
         points += 100;
         displayPoints.innerHTML = points;
       } else if (cells[currentBallPosition].classList.contains("shield")) {
         clearInterval(ball);
         cells[currentBallPosition].classList.remove("ball");
-      } else if (invadersShot.length === invaders.length) {
-        playerWins();
       } else {
         cells[currentBallPosition].classList.remove("ball");
         currentBallPosition -= width;
