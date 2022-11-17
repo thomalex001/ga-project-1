@@ -163,16 +163,19 @@ li {
   background-position: center;
   background-size: cover;
 }
-@media screen and (max-width: 750px ) {
+
+@media screen and (max-width: 1130px ) {
 #mario-head {
-  height: 230px;
-  bottom: 40px
+  height: 170px;
+  top: -120px;
+  left: 30px
 }
 #wario-head {
-  height: 230px
+  height: 170px;
+  left: 34%;
+  transform: rotate(4deg);
 }
-
-
-
-
+#mario-world-header {
+  right: 10%
+}
 }
