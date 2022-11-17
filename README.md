@@ -73,10 +73,12 @@ Must To:
 <!-- Remove turtles when I win -->
 <!-- Fighters moving right -->
 <!-- Remove bullets when I win -->
-Play button click multiple times
+<!-- Play button click multiple times -->
 Collision when two bullets hit each other
 Turtles don't disapear
 Restart button doesn't remove aliens or bullets after playing.
+Ball kills too many invaders
+Keep only Play button and change innerHTML when clicked
 
 Only throw bullets from invaders still alive
 Fix bug when fireballs are thrown too fast

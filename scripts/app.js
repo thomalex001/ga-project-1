@@ -48,6 +48,7 @@ function init() {
   }
 
   function handleKeyUp(event) {
+    console.log('handleKeyUp');
     const x = playerPosition % width;
     removePlayer();
 
@@ -111,8 +112,19 @@ function init() {
     }
   }
 
-  function restartingGame() {
-    console.log('restart button works');
+  // function restartingGame() {
+  //   console.log('restart button works');
+  //   clearInterval(moveInvadersInterval);
+  //   clearInterval(invadersShootingInterval);
+  //   removeInvaders();
+  //   clearInterval(ball);
+  //   document.removeEventListener('keyup', playerShooting);
+  //   displayPoints.innerHTML = null;
+  //   displayLives.innerHTML = null;
+  // }
+  function startingGame() {
+    console.log('starting game works');
+    // clear previous game
     clearInterval(moveInvadersInterval);
     clearInterval(invadersShootingInterval);
     removeInvaders();
@@ -120,15 +132,18 @@ function init() {
     document.removeEventListener('keyup', playerShooting);
     displayPoints.innerHTML = null;
     displayLives.innerHTML = null;
-  }
-  function startingGame() {
-    console.log('starting game works');
+
+    // new game
+    invaders = [
+      44, 56, 64, 65, 70, 75, 76, 84, 85, 86, 89, 90, 91, 94, 95, 96, 105, 106,
+      107, 109, 110, 111, 113, 114, 115, 126, 127, 128, 131, 132, 133, 134, 148,
+      152,
+    ];
     invadersShootingInterval = setInterval(invadersShooting, 2000);
     moveInvadersInterval = setInterval(moveInvaders, 1000);
     document.addEventListener('keyup', playerShooting);
-    marioReggae.src = './sounds/mario-reggae.mp3';
-    marioReggae.play();
-    
+    // marioReggae.src = './sounds/mario-reggae.mp3';
+    // marioReggae.play();
   }
   function gameOver() {
     displayResult.innerHTML = 'GAME OVER :(';
@@ -146,10 +161,11 @@ function init() {
   addShield();
   addPlayer();
   startGame.addEventListener('click', startingGame);
-  restartGame.addEventListener('click', restartingGame);
+  // restartGame.addEventListener('click', restartingGame);
   document.addEventListener('keyup', handleKeyUp);
 
   function playerShooting(event) {
+    console.log('playerShooting');
     let currentBallPosition = playerPosition;
     function shootBall() {
       cells[currentBallPosition].classList.remove('ball');
@@ -191,28 +207,26 @@ function init() {
         // console.log(cells[currentBulletPosition]);
         cells[currentBulletPosition].classList.remove('bullet');
         currentBulletPosition += width; // 369 + 20 = 389
-        cells[currentBulletPosition].classList.add('bullet');
-        if (cells[currentBulletPosition].classList.contains('shield')) {
-          clearInterval(bullet);
-          cells[currentBulletPosition].classList.remove('bullet');
-          cells[currentBulletPosition].classList.remove('shield');
-          const shieldShot = shield.indexOf(currentBulletPosition);
-          shieldsShot.push(shieldShot);
-        }
-        if (cells[currentBulletPosition].classList.contains('player')) {
-          lives -= 1;
-          displayLives.innerHTML = lives;
-        }
-        if (lives < 1) {
-          cells[currentBulletPosition].classList.remove('bullet');
-          gameOver();
+        if (currentBulletPosition < 400) {
+          cells[currentBulletPosition].classList.add('bullet');
+          if (cells[currentBulletPosition].classList.contains('shield')) {
+            clearInterval(bullet);
+            cells[currentBulletPosition].classList.remove('bullet');
+            cells[currentBulletPosition].classList.remove('shield');
+            const shieldShot = shield.indexOf(currentBulletPosition);
+            shieldsShot.push(shieldShot);
+          }
+          if (cells[currentBulletPosition].classList.contains('player')) {
+            lives -= 1;
+            displayLives.innerHTML = lives;
+          }
+          if (lives < 1) {
+            cells[currentBulletPosition].classList.remove('bullet');
+            gameOver();
+          }
         }
       }
     }, 200);
   }
-
-
-
-
 }
 window.addEventListener('DOMContentLoaded', init);
