@@ -22,6 +22,7 @@ function init() {
   let points = 0;
   let lives = 3;
   let invadersShootingInterval;
+  let collisionInterval;
   let moveInvadersInterval;
   let bullet;
   let ball;
@@ -122,6 +123,7 @@ function init() {
   
   function startingGame() {
     // clearing  previous game //
+    startGame.blur()
     clearInterval(moveInvadersInterval);
     clearInterval(invadersShootingInterval);
     removeInvaders();
@@ -167,11 +169,16 @@ function init() {
     playSounds.src = './sounds/game-over.mp3';
     marioReggae.pause();
     playSounds.play();
+    lives = 3;
   }
   function playerWins() {
     displayResult.innerHTML = "YOU WIN!!!";
     clearInterval(invadersShootingInterval);
+    clearInterval(ball);
     document.removeEventListener("keyup", playerShooting);
+    playSounds.src = './sounds/mario-win.mp3';
+    marioReggae.pause();
+    playSounds.play();
   }
 
   createGrid();
@@ -189,6 +196,8 @@ function init() {
         cells[currentBallPosition].classList.remove("ball");
         clearInterval(ball);
       } else if (cells[currentBallPosition].classList.contains("invaders")) {
+        playMoreSounds.src = './sounds/mario-yahoo.mp3';
+        playMoreSounds.play();
         clearInterval(ball);
         cells[currentBallPosition].classList.remove("ball");
         cells[currentBallPosition].classList.remove("invaders");
@@ -240,7 +249,6 @@ function init() {
           if (lives === 0) {
             gameOver();
             cells[currentBulletPosition].classList.remove("bullet");
-            lives = 1;
           }
         } 
       } 

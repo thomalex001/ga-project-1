@@ -85,6 +85,11 @@ Created Play/Restart button and styled it to 80's arcade games.
 
 
 DAY FOUR:
+HTML : 
+. Added a two more <audio> tags as sounds so that sounds could play each other
+
+
+
 <!-- Responsive design -->
 <!-- Restart button doesn't remove aliens or bullets after playing. -->
 <!-- Keep only Play button and change innerHTML when clicked -->
@@ -92,21 +97,21 @@ DAY FOUR:
 <!-- Ball kills too many invaders -->
 <!-- Turtles get stuck -->
 <!-- Fireballs are going overgrid -->
+<!-- Add Sounds -->
 
-
+Winning sound
 Collision when two bullets hit each other
 Fix bug when fireballs are thrown too fast
-
 collision (explosion) when bullet or ball hits
 Background dark when game over
 
-Add Sounds
 Reduce number of bullets
 
 Only throw bullets from invaders still alive
 TO DO:
 Add collision styling when bullet hits
 Move Mario left to right
+If Mario not touched by Wariors game is not over
 
 
 
