@@ -87,39 +87,37 @@ Created Play/Restart button and styled it to 80's arcade games.
 DAY FOUR:
 HTML : 
 . Added a two more <audio> tags as sounds so that sounds could play each other
+. Added incon to the page
 
 
+JS:
+. Removed restart button and instead created a Play/Restart function while changing innerHTML when clicked.
+. Debuged balls going off grid
+. Debuged balls which were killing all invaders in their path
+. Debugged turtles getting stuck in div's randomly by increasing their speed
+. Added sounds for background music, balls/bullet thrown, Game Over, Wining, getting hit, ennemy being hit, button start being clicked.
 
-<!-- Responsive design -->
-<!-- Restart button doesn't remove aliens or bullets after playing. -->
-<!-- Keep only Play button and change innerHTML when clicked -->
-<!-- Stop balls after width -->
-<!-- Ball kills too many invaders -->
-<!-- Turtles get stuck -->
-<!-- Fireballs are going overgrid -->
-<!-- Add Sounds -->
+. Winning sound
+. Collision when two bullets hit each other
+. Fix bug when fireballs are thrown too fast
+. collision (explosion) when bullet or ball hits
+. Background dark when game over
 
-Winning sound
-Collision when two bullets hit each other
-Fix bug when fireballs are thrown too fast
-collision (explosion) when bullet or ball hits
-Background dark when game over
 
-Reduce number of bullets
-
-Only throw bullets from invaders still alive
-TO DO:
-Add collision styling when bullet hits
-Move Mario left to right
-If Mario not touched by Wariors game is not over
+CSS:
+Create responsive design for screens under XXpx
+Added background images
+Created personalised logo 
+Modified colors of button to match logo colors
 
 
 
 
-<!-- Collision when bullet hits brick wall -->
-<!-- Add lives to JS -->
-<!-- Add Game Over to the Screen -->
-<!-- Remove turtles when I win -->
-<!-- Fighters moving right -->
-<!-- Remove bullets when I win -->
-<!-- Play button click multiple times -->
+AREAS OF IMPROVEMENT:
+
+. Reduce the number of bullets that can be thrown. Possibly use an interval.
+. Only throw bullets from invaders still in the game
+. Add collision styling when bullets/balls hit a target
+. Move Player's image left to right when keys are being pressed 
+. If ennemies touch the ground before touching Player, the game does not end.
+

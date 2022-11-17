@@ -46,7 +46,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
+  z-index: 2;
 }
 .grid-wrapper {
   box-shadow: 0 20px 20px 0 rgba(25, 25, 27, 0.5);
@@ -60,31 +60,27 @@ body {
   padding-bottom: 5px;
   min-height: 660px;
   z-index: 1;
+  border-radius: 30px;
 }
-
 .grid {
   align-items: center;
   display: flex;
   flex-wrap: wrap;
-
   text-align: center;
   height: 600px;
   min-width: 600px;
 }
-
 .grid div {
   flex-grow: 1;
   height: 5%;
   width: 5%;
 }
-
 .grid div.invaders {
   background-image: url('../assets/wario.png');
   background-repeat: no-repeat;
   background-size: 25px;
   background-position: center;
 }
-
 .grid div.player {
   background-image: url('../assets/mario.png');
   background-repeat: no-repeat;
@@ -93,7 +89,6 @@ body {
   cursor: pointer;
   height: 6%;
 }
-
 aside {
   position: relative;
   box-shadow: 0 20px 20px 0 rgba(25, 25, 27, 0.5);
@@ -106,6 +101,7 @@ aside {
   max-width: 300px;
   min-width: 300px;
   margin-left: 5%;
+  border-radius: 30px;
 }
 li {
   margin: 8px;
@@ -122,7 +118,6 @@ li {
 .rules h3 {
   padding-left: 5%
 }
-
 .buttons {
   display: flex;
   flex-direction: column;
@@ -141,14 +136,13 @@ li {
   padding: 10px 0 10px 10px ;
   color: white;
   text-shadow: 2px 2px rgb(57, 145, 172);
-  background-color: rgba(39, 212, 51, 0.775);
+  background-color: #3ec801;
   border-radius: 15px;
   box-shadow: 0 5px 5px 0 rgba(43, 103, 109, 0.5);
   cursor: pointer;
   width: 60%;
   height: 50%;
   font-size: 40px
-
 }
 .shield {
   background-image: url('../assets/brick.png');
@@ -169,10 +163,6 @@ li {
   background-position: center;
   background-size: cover;
 }
-.collision {
-  background-color: blue;
-}
-
 @media screen and (max-width: 750px ) {
 #mario-head {
   height: 230px;
