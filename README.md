@@ -80,14 +80,16 @@ JS:
 . Included most function for the game in the "Play" function to resolve this, however still had some issues with it.
 
 CSS:
-Created Play/Restart buttons and styled them to 80's arcade games.
+Created Play/Restart button and styled it to 80's arcade games.
 
 
 
 DAY FOUR:
+<!-- Responsive design -->
 
 
-
+Background dark when game over
+collision (explosion) when bullet or ball hits
 Restart button doesn't remove aliens or bullets after playing.
 Ball kills too many invaders
 Collision when two bullets hit each other
@@ -104,7 +106,6 @@ TO DO:
 Add collision styling when bullet hits
 Move Mario left to right
 Invaders not moving to the end when shot on the side
-Responsive design
 
 <!-- Collision when bullet hits brick wall -->
 <!-- Add lives to JS -->

@@ -129,23 +129,28 @@ function init() {
     clearInterval(invadersShootingInterval);
     removeInvaders();
     clearInterval(ball);
-    document.removeEventListener('keyup', playerShooting);
+    // document.removeEventListener('keyup', playerShooting);
     displayPoints.innerHTML = null;
     displayLives.innerHTML = null;
     startGame.innerHTML = 'Restart';
     startGame.classList.add('restart-btn');
-    startGame.style.background = ('rgba(247, 72, 56, 0.847');
+    startGame.style.background = 'rgba(247, 72, 56, 0.847';
     startGame.style.fontSize = '22px';
-    
+
     // new game
     invaders = [
       44, 56, 64, 65, 70, 75, 76, 84, 85, 86, 89, 90, 91, 94, 95, 96, 105, 106,
       107, 109, 110, 111, 113, 114, 115, 126, 127, 128, 131, 132, 133, 134, 148,
       152,
     ];
+    shield = [
+      301, 302, 303, 305, 306, 307, 309, 310, 312, 313, 314, 316, 317, 318, 321,
+      322, 323, 325, 326, 327, 329, 330, 332, 333, 334, 336, 337, 338,
+    ];
     invadersShootingInterval = setInterval(invadersShooting, 2000);
     moveInvadersInterval = setInterval(moveInvaders, 1000);
     document.addEventListener('keyup', playerShooting);
+    addShield();
     // marioReggae.src = './sounds/mario-reggae.mp3';
     // marioReggae.play();
   }
