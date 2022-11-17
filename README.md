@@ -1,23 +1,25 @@
+                            ********************************
+                            ----- MARIO WORLD INVADERS ----       
+                            ********************************
+
+HTML:
+
 1. Create basic HTML 
 
 JS:
 2. create a grid 10*10 inside game-container
 3. add player on grid and set rules 
-limitations
+    limitations
 4. add alien and set limitations
-make aliens as an array
+    make aliens as an array
 5. Link start and reset buttons
 6. add shooting functions on both sides
 7. add lives function
 8. add score function
 
-
-
-
 CSS: 
-Background will be Mario Gameplay
-Bullets will be ball of fire
-
+. Background will be Mario Gameplay
+. Bullets will be ball of fire
 
 
 SOUNDS:
@@ -27,21 +29,21 @@ SOUNDS:
 3. add start/reset button sounds
 
 
+
 DAY ONE:
 
-HTML 
+HTML:
 Created most HTML structure based one wireframe.
 
 CSS:
-styled the grid and used flexbox to move <aside> to the right.
-Created Play Game and Restart buttons. Linked PlayGame button to JS. Play Game button functioning.
+. Styled the grid and used flexbox to move <aside> to the right.
+. Created Play Game and Restart buttons. Linked PlayGame button to JS. Play Game button functioning.
 
 JS:
-Created Grid 10*10
-Added player and invaders on grid
-
-Got stuck with invaders moving pattern, for some reason they would bounce on each side only for two lines.
-Used "!goingRight" with a bang operator instead of "goingLeft", also increased grid to 20*20 as I was getting an error with 10*10.
+. Created Grid 10*10
+, Added player and invaders on grid
+. Got stuck with invaders moving pattern, for some reason they would bounce on each side only for two lines.
+. Used "!goingRight" with a bang operator instead of "goingLeft", also increased grid to 20*20 as I was getting an error with 10*10.
 
 
 
@@ -64,20 +66,32 @@ CSS:
 . Added brick wall as Mario's shield
 . Added box-shadow on both game-container and <aside> container to add some depth to the game
 
+
 DAY THREE:
 
-Must To:
-<!-- Collision when bullet hits brick wall -->
-<!-- Add lives to JS -->
-<!-- Add Game Over to the Screen -->
-<!-- Remove turtles when I win -->
-<!-- Fighters moving right -->
-<!-- Remove bullets when I win -->
-<!-- Play button click multiple times -->
-Collision when two bullets hit each other
-Turtles don't disapear
+HTML:
+Added <audio> tags and tested for background sound when Play button clicked.
+
+JS:
+. Added "lives" function with changes made in the DOM for player to see.
+. Added "Game Over"  and "You Win!" to the DOM for player to see.
+. Had a bug when added invaders as a W shape as they were coming off the screen. Fixed with "e % width === 0)"
+. When creating Play/Restart buttons I started to have lots of bugs in the game such as: bullets getting stuck in the grid, bullets/bricks collision not happening.
+. Included most function for the game in the "Play" function to resolve this, however still had some issues with it.
+
+CSS:
+Created Play/Restart buttons and styled them to 80's arcade games.
+
+
+
+DAY FOUR:
+
+
+
 Restart button doesn't remove aliens or bullets after playing.
 Ball kills too many invaders
+Collision when two bullets hit each other
+Turtles don't disapear
 Keep only Play button and change innerHTML when clicked
 
 Only throw bullets from invaders still alive
@@ -90,3 +104,12 @@ TO DO:
 Add collision styling when bullet hits
 Move Mario left to right
 Invaders not moving to the end when shot on the side
+Responsive design
+
+<!-- Collision when bullet hits brick wall -->
+<!-- Add lives to JS -->
+<!-- Add Game Over to the Screen -->
+<!-- Remove turtles when I win -->
+<!-- Fighters moving right -->
+<!-- Remove bullets when I win -->
+<!-- Play button click multiple times -->

@@ -132,7 +132,11 @@ function init() {
     document.removeEventListener('keyup', playerShooting);
     displayPoints.innerHTML = null;
     displayLives.innerHTML = null;
-
+    startGame.innerHTML = 'Restart';
+    startGame.classList.add('restart-btn');
+    startGame.style.background = ('rgba(247, 72, 56, 0.847');
+    startGame.style.fontSize = '22px';
+    
     // new game
     invaders = [
       44, 56, 64, 65, 70, 75, 76, 84, 85, 86, 89, 90, 91, 94, 95, 96, 105, 106,

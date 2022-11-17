@@ -130,7 +130,7 @@ li {
   font-size: 40px
 
 }
-#restart-btn{
+/* .restart-btn {
   cursor: pointer;
   font-family: 'Press Start 2P', cursive;
   text-align: center;
@@ -146,7 +146,7 @@ li {
   border-radius: 7px;
   cursor: pointer;
   height : 60%
-}
+} */
 .shield {
   background-image: url('../assets/brick.png');
   background-size: cover;
