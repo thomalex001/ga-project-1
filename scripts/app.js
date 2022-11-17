@@ -2,6 +2,7 @@ function init() {
   // ***************************
   // ----- DOM ELEMENTS ----
   // ***************************
+
   const grid = document.querySelector('.grid');
   const startGame = document.querySelector('#start-btn');
   const displayLives = document.querySelector('#lives');
@@ -10,9 +11,11 @@ function init() {
   const marioReggae = document.querySelector('#mario-reggae');
   const playSounds = document.querySelector('#play-sounds');
   const playMoreSounds = document.querySelector('#play-more-sounds');
+
   // ***************************
   // --- DECLARED ELEMENTS ---
   // ***************************
+
   const cells = [];
   const width = 20;
   const cellCount = width * width;
@@ -39,6 +42,7 @@ function init() {
   // ***************************
   // -- GAME LAYOUT FUNCTIONS --
   // ***************************
+
   function createGrid() {
     for (let i = 0; i < cellCount; i++) {
       const cell = document.createElement('div');
@@ -67,14 +71,17 @@ function init() {
       cells[invaders[j]].classList.remove('invaders');
     }
   }
+  createGrid();
+  addShield();
+  addPlayer();
 
   // ***************************
   // ---- MOVING FUNCTIONS----
   // ***************************
+
   function handleKeyUp(event) {
     const x = playerPosition % width;
     removePlayer();
-
     switch (event.keyCode) {
       case 39:
         if (x < width - 1) playerPosition++;
@@ -90,7 +97,6 @@ function init() {
     const leftSide = invaders.some((e) => e % width === 0);
     const rightSide = invaders.some((e) => e % width === width - 1);
     removeInvaders();
-
     if (rightSide && goingRight) {
       for (let i = 0; i < invaders.length; i++) {
         invaders[i] += width + 1;
@@ -113,11 +119,13 @@ function init() {
       gameOver();
     }
   }
-
-
+  // ***************************
+  // -- CLEAR/START FUNCTION --
+  // ***************************
 
   function startingGame() {
-    // clearing  previous game //
+    // CLEARING PREVIOUS GAME  --->
+
     startGame.blur();
     clearInterval(moveInvadersInterval);
     clearInterval(invadersShootingInterval);
@@ -131,7 +139,9 @@ function init() {
     startGame.style.background = '#f12c0c';
     startGame.style.fontSize = '22px';
 
-    // new game //
+    // NEW GAME --->
+
+    addShield();
     invaders = [
       44, 56, 64, 65, 70, 75, 76, 84, 85, 86, 89, 90, 91, 94, 95, 96, 105, 106,
       107, 109, 110, 111, 113, 114, 115, 126, 127, 128, 131, 132, 133, 134, 148,
@@ -145,15 +155,20 @@ function init() {
     moveInvadersInterval = setInterval(moveInvaders, 1000);
     document.addEventListener('keyup', playerShooting);
     document.addEventListener('keyup', handleKeyUp);
-    addShield();
+
+    // BACKROUND/BUTTON SOUND -->
+
     marioReggae.src = './sounds/mario-reggae.mp3';
     playSounds.src = './sounds/coin.mp3';
     marioReggae.play();
     playSounds.play();
   }
-  // ******************************
-  // GAME OVER PLAYER WIN FUNCTIONS
-  // ******************************
+  startGame.addEventListener('click', startingGame);
+
+  // ********************************
+  // GAME OVER & PLAYER WIN FUNCTIONS
+  // ********************************
+
   function gameOver() {
     displayResult.innerHTML = 'GAME OVER :(';
     displayLives.innerHTML = '0';
@@ -175,10 +190,9 @@ function init() {
     playSounds.play();
   }
 
-  createGrid();
-  addShield();
-  addPlayer();
-  startGame.addEventListener('click', startingGame);
+  // ******************************
+  //  --- SHOOTING FUNCTIONS ---
+  // ******************************
 
   function playerShooting(event) {
     let currentBallPosition = playerPosition;
