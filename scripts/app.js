@@ -124,6 +124,7 @@ function init() {
   // ***************************
 
   function startingGame() {
+    
     // CLEARING PREVIOUS GAME  --->
 
     startGame.blur();
@@ -197,7 +198,6 @@ function init() {
   function playerShooting(event) {
     let currentBallPosition = playerPosition;
     function shootBall() {
-      console.log(shootBall);
       const y = Math.floor(currentBallPosition / width);
       if (y === 0) {
         cells[currentBallPosition].classList.remove('ball');
@@ -210,11 +210,11 @@ function init() {
         cells[currentBallPosition].classList.remove('invaders');
         const invaderShot = invaders.indexOf(currentBallPosition);
         invaders.splice(invaderShot, 1);
+        points += 100;
+        displayPoints.innerHTML = points;
         if (invaders.length === 0) {
           playerWins();
         }
-        points += 100;
-        displayPoints.innerHTML = points;
       } else if (cells[currentBallPosition].classList.contains('shield')) {
         clearInterval(ball);
         cells[currentBallPosition].classList.remove('ball');
@@ -223,11 +223,10 @@ function init() {
         currentBallPosition -= width;
         cells[currentBallPosition].classList.add('ball');
       }
-    }
-    if (event.keyCode === 32) {
+    } if (event.keyCode === 32) {
       ball = setInterval(shootBall, 100);
       playSounds.src = './sounds/ball.mp3';
-      playSounds.play();
+      playSounds.play();;
     }
   }
 
