@@ -95,7 +95,7 @@ JS:
 . Debuged balls going off grid
 . Debuged balls which were killing all invaders in their path
 . Debugged turtles getting stuck in div's randomly by increasing their speed
-. Added sounds for background music, balls/bullet thrown, Game Over, Wining, getting hit, ennemy being hit, button start being clicked.
+. Added sounds for background music, balls/bullet thrown, Game Over, Winning, getting hit, ennemy being hit, button start being clicked.
 
 . Winning sound
 . Collision when two bullets hit each other
@@ -111,13 +111,13 @@ Created personalised logo
 Modified colors of button to match logo colors
 
 
+BUGS:
+. Balls get disabled when shooting Shield too many times
+. If ennemies touch the ground before touching Player, the game does not end.
 
 
 AREAS OF IMPROVEMENT:
-
 . Reduce the number of bullets that can be thrown. Possibly use an interval.
-. Only throw bullets from invaders still in the game
 . Add collision styling when bullets/balls hit a target
-. Move Player's image left to right when keys are being pressed 
-. If ennemies touch the ground before touching Player, the game does not end.
+. Flip axis of Player's image left to right when keys are being pressed 
 

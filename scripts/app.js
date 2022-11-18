@@ -201,9 +201,11 @@ function init() {
       const y = Math.floor(currentBallPosition / width);
       if (y === 0) {
         cells[currentBallPosition].classList.remove('ball');
+        clearInterval(ball);
       } else if (cells[currentBallPosition].classList.contains('invaders')) {
         playMoreSounds.src = './sounds/mario-yahoo.mp3';
         playMoreSounds.play();
+        clearInterval(ball);
         cells[currentBallPosition].classList.remove('ball');
         cells[currentBallPosition].classList.remove('invaders');
         const invaderShot = invaders.indexOf(currentBallPosition);
