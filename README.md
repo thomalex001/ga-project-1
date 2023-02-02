@@ -56,6 +56,9 @@ There are several approaches here, with collision detection being the more chall
 * Drew a sketch of the features shown when playing the game such as: Lives left, Total points, Winner.
 * Added button and it's purpose, as well as it's class earlier on.
 * Pre-named each `<div>` components classes in order to have a reference point in later stages.
+
+![mario_world_wireframe.png](./assets/mario_world_wireframe2.png "")
+
 * Used an spreadexcell sheet to experiment with different ennemy design patterns which I found very useful. 
 I chose a **"W"** shape to recall the ennemy's name : **Wario!**
 * Also added the position of the **shields** that protect the player.
