@@ -13,7 +13,7 @@ Once the project is cloned onto your machine, right click on the **index.html** 
 server"**. The game is ready to be played, I would recommend Chrome as a browser.
 
 ## Timeframe 
-This was a solo project to be completed within in one week.
+This was a solo project to be completed within one week.
 
 ## Technologies Used
 * Excalidraw (wireframe)
@@ -23,6 +23,7 @@ This was a solo project to be completed within in one week.
 * Excell
 * Visual Studio Code
 * Google Fonts
+* Git/GitHub
 
 ## Brief
 ### Gameplay
@@ -59,7 +60,7 @@ There are several approaches here, with collision detection being the more chall
 
 ![mario_world_wireframe.png](./assets/mario_world_wireframe2.png "")
 
-* Used an spreadexcell sheet to experiment with different ennemy design patterns which I found very useful. 
+* Used an excell spreadsheet to experiment with different ennemy design patterns which I found very useful. 
 I chose a **"W"** shape to recall the ennemy's name : **Wario!**
 * Also added the position of the **shields** that protect the player.
 
@@ -91,7 +92,7 @@ I chose a **"W"** shape to recall the ennemy's name : **Wario!**
   ```
   * Added the player and the invaders on the grid.
   * Had real difficulty with the invaders moving pattern.
-  * Used `"!goingRight"` (app.js - line 100) with a bang operator instead of`"goingLeft"` which fixed the issue with invdaders moving pattern.
+  * Used `"!goingRight"` (app.js - line 100) with a bang operator instead of`"goingLeft"` which fixed the issue with invaders moving pattern.
   * Increased the grid to **20x20** as it did not allow enough movement for the player and ennemy.
 
 ### Day Two
@@ -180,7 +181,7 @@ I chose a **"W"** shape to recall the ennemy's name : **Wario!**
 I came accross many challenges whilst building this game, some took a lot of time to fix, others were a great learning curve and I wish to share these too:
 
 The hardest things to debug were `PlayerShooting()` and `InvadersShooting()` functions.
-What I found difficult was getting my head around the consecutive `if()` statements and the layered complexity they created. This function is longest I had written up to that point (around 30 lines).
+What I found difficult was getting my head around the consecutive `if()` statements and the layered complexity they created. This function is the longest I had written up to that point (around 30 lines).
 
 ``` javascript
 function playerShooting(event) {
@@ -220,7 +221,7 @@ function playerShooting(event) {
 ```
 
 ## Wins
-* Working with the DOM became second nature after a couple of days of developing this app which I was pleased about
+* Working with the DOM became second nature after a couple of days of developing this app which I was pleased about.
 * I now have a much better understanding in JavaScript functions, `for()` loops, `if()` statements etc.. 
 * Looking at the finished game, I am very pleased with the design and main functionalities even if some bugs can still be found when playing it.
 
@@ -275,4 +276,3 @@ creating a wireframe to refer to and planning the week ahead.
 ⠀⠀⠀⠀⠀⢸⣿⡀⣾⠀⠀⠀⠀⠀⠀⠀⣿⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠈⠻⣷⣿⣦⠀⠀⠀⠀⢀⣴⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠿⢷⣶⡾⠿⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
-
