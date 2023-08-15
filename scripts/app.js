@@ -226,7 +226,7 @@ function init() {
     } if (event.keyCode === 32) {
       ball = setInterval(shootBall, 100);
       playSounds.src = './sounds/ball.mp3';
-      playSounds.play();;
+      playSounds.play();
     }
   }
 
